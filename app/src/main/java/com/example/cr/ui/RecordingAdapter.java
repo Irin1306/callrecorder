@@ -108,8 +108,8 @@ public class RecordingAdapter extends RecyclerView.Adapter<RecordingAdapter.View
                     Log.d("filename", "Stop" + rec.getName());
 
                 } else {
-                    holder.startPlaying(rec, position);
                     holder.markAllPaused(position);
+                    holder.startPlaying(rec, position);
                     rec.setPlaying(true);
 
                     Log.d("filename", "isPlaying" + rec.getName());
@@ -126,7 +126,7 @@ public class RecordingAdapter extends RecyclerView.Adapter<RecordingAdapter.View
                 holder.deleteRec(rec, position);
                // notifyDataSetChanged();
                 // notifyItemRemoved(holder.getAdapterPosition());
-                String name = rec.getAbsolutePath();
+                //String name = rec.getAbsolutePath();
 
                 // mPresenter.findByNameAndDelete(name);
                 //mPresenter.deleteAll();
@@ -186,7 +186,7 @@ public class RecordingAdapter extends RecyclerView.Adapter<RecordingAdapter.View
             for (int i = 0; i < mRecordingItemList.size(); i++) {
                 //if (i != position) {
                 mRecordingItemList.get(i).setPlaying(false);
-                mRecordingItemList.set(i, mRecordingItemList.get(i));
+                //mRecordingItemList.set(i, mRecordingItemList.get(i));
                // }
             }
             notifyDataSetChanged();
@@ -232,6 +232,7 @@ public class RecordingAdapter extends RecyclerView.Adapter<RecordingAdapter.View
         }
 
         private void startPlaying(final RecordingItem audio, final int position) {
+
             mMediaPlayer = new MediaPlayer();
             Log.e(TAG, "setDataSource" + audio.getAbsolutePath());
 
@@ -290,8 +291,8 @@ public class RecordingAdapter extends RecyclerView.Adapter<RecordingAdapter.View
             if (rec.delete()) {
 
                 mRecordingItemList.remove(position);
-                notifyDataSetChanged();
-
+                //notifyDataSetChanged();
+                notifyItemRemoved(position);
                 Log.e(TAG, "recording deleted");
             } else {
                 Log.e(TAG, "recording was not found" + rec.getName());

@@ -71,6 +71,7 @@ public class CallReceiver extends BroadcastReceiver {
         context.registerReceiver(this, filter);
         isRegistered = true;
         Log.i(TAG, "callReceiverRegistred" + this);
+       // Toast.makeText(context, "callReceiver.register", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -83,8 +84,10 @@ public class CallReceiver extends BroadcastReceiver {
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
-        Log.i(TAG, "callReceiverUnRegistred" + this);
+
         isRegistered = false;
+        Log.i(TAG, "callReceiverUnRegistred" + this);
+       // Toast.makeText(context, "callReceiver.unregister", Toast.LENGTH_SHORT).show();
     }
 
     class ThePhoneStateListener extends PhoneStateListener {

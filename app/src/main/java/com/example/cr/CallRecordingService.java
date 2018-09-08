@@ -148,7 +148,7 @@ public class CallRecordingService extends Service implements Runnable {
         // TODO Auto-generated method stub
         // super.onStart(intent, startId);
         Log.d(TAG, "onStartCommand");
-        Toast.makeText(getApplicationContext(), "CallRecordingService onStartCommand", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "CallRecordingService onStartCommand", Toast.LENGTH_SHORT).show();
 
         if (intent.hasExtra("number")) {
             phoneNumber = intent.getStringExtra("number");
@@ -257,7 +257,7 @@ public class CallRecordingService extends Service implements Runnable {
 
                     Log.i(TAG, "fileName prepared" + fileName);
                     Log.i(TAG, "Call Recording started");
-            Toast.makeText(getApplicationContext(), "CR started" + fileName, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "CR started" + fileName, Toast.LENGTH_LONG).show();
         }
 
     }
@@ -278,9 +278,7 @@ public class CallRecordingService extends Service implements Runnable {
       //  }
 
 
-
-
-            Toast.makeText(getApplicationContext(), "CR stopped" + fileName, Toast.LENGTH_LONG).show();
+           // Toast.makeText(getApplicationContext(), "CR stopped" + fileName, Toast.LENGTH_LONG).show();
 
 
     }
@@ -302,7 +300,7 @@ public class CallRecordingService extends Service implements Runnable {
     @Override
     public void onDestroy() {
 
-       // unregisterReceiver(callStateReceiver);
+        unregisterReceiver(callStateReceiver);
        /* if (isRecording) {
             stopRecording();
             Log.d(TAG, "recorder.stop, recorder.release, recording = false");
@@ -317,7 +315,7 @@ public class CallRecordingService extends Service implements Runnable {
 
         super.onDestroy();
         Log.d(TAG, "onDestroy");
-        Toast.makeText(getApplicationContext(), "CallRecordingService onDestroy", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getApplicationContext(), "CallRecordingService onDestroy", Toast.LENGTH_SHORT).show();
     }
 
 

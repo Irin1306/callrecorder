@@ -135,12 +135,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (checked) {
 
                     callReceiver.register(this);
-
+                    Log.i(TAG, "callReceiver.register");
+                   // Toast.makeText(this, "go", Toast.LENGTH_SHORT).show();
 
                 } else {
 
                     callReceiver.unregister(this);
-
+                    Log.i(TAG, "callReceiver.unregister");
+                   // Toast.makeText(this, "stop", Toast.LENGTH_SHORT).show();
                 }
             //} else {
              //   getPermissionToRecord();
@@ -189,7 +191,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //callReceiver.unregister(this);
+
+        callReceiver.unregister(this);
 
     }
 }
