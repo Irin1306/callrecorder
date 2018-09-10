@@ -177,7 +177,7 @@ public class RecordingAdapter extends RecyclerView.Adapter<RecordingAdapter.View
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-
+                    //progress=seekBar.getProgress();
                 }
             });
         }
@@ -252,16 +252,17 @@ public class RecordingAdapter extends RecyclerView.Adapter<RecordingAdapter.View
             //mMediaPlayer.seekTo(lastProgress);
             seekBar.setMax(mMediaPlayer.getDuration());
             isPlaying = true;
-            //seekUpdation();
+
 
 
             mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     if (mMediaPlayer != null) {
-                       //mMediaPlayer.release();
+                        mMediaPlayer.release();
                         mMediaPlayer = null;
                         imageViewPlay.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+                        isPlaying = false;
                         audio.setPlaying(false);
                         notifyItemChanged(position);
                     }

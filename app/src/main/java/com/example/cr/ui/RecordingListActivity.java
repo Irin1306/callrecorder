@@ -64,6 +64,7 @@ public class RecordingListActivity extends AppCompatActivity implements CallList
 
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -71,6 +72,11 @@ public class RecordingListActivity extends AppCompatActivity implements CallList
         fetchRecordings();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        recordingItemList.clear();
+    }
 
     private void fetchRecordings() {
         File root = android.os.Environment.getExternalStorageDirectory();
